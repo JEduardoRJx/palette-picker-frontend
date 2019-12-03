@@ -1,5 +1,5 @@
 # Palette Picker Frontend
 
 ## Contributors
-J. Eduardo Rodriguez
-[Lacy Rudd](https://github.com/dawnlunacy)
+- [J. Eduardo Rodriguez](https://github.com/JEduardoRJx)
+- [Lacy Rudd](https://github.com/dawnlunacy)

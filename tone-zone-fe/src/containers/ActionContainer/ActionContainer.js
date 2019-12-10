@@ -1,10 +1,11 @@
 import React from 'react';
 import './ActionContainer.scss';
+import logo from '../../colorwheel.jpg'
 
 export const ActionContainer = () => {
   return (
     <section className="action-container">
-      <p> Logo </p>
+      <img src={logo} alt="Tone Zone logo, a color wheel" className="logo"/>
       <button className="randomize-btn"> Randomize </button>
       <button className="save-btn"> SAVE </button>
     </section>

@@ -11,6 +11,7 @@ export const Header = () => {
   return(
     <header>
       <h1> Tone Zone </h1>
+      <div className="header-bottom"> </div>
     </header>
   )
 }

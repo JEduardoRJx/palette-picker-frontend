@@ -1,6 +1,7 @@
 import React from 'react';
 import { ProjectForm } from '../ProjectForm/ProjectForm';
 import { ActionContainer } from '../ActionContainer/ActionContainer';
+import { PaletteForm } from '../PaletteForm/PaletteForm';
 // import PropTypes from 'prop-types';
 
 export const Main = () => {
@@ -9,6 +10,7 @@ export const Main = () => {
     <section className="main-section"> 
     <ProjectForm />
     <ActionContainer />
+    <PaletteForm />
     </section>
   )
 }

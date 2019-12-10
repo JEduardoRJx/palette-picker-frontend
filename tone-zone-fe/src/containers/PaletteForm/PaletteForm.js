@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 
-export class ProjectForm extends Component {
+export class PaletteForm extends Component {
   constructor() {
     super()
     this.state = {
-      currentProject: {
-        name: ''
+      currentPalette: {
+        name: '',
+        colors: []
       },
-      allProjects: [],
+      allPalettes: [],
       error: ''
     }
   }
   render() {
     return (
-      <section className="project-details">
-        <form className="project-form">
-          Enter Project Name: <input type="text" name="projectName"></input>
-          <input type="submit"></input>
+      <section className="palette-details">
+        <form className="palette-form">
+          Enter Palette Name: <input type="text" name="projectName"></input>
+        <input type="submit"></input>
         </form>
         <select>
           <option value="Project Name"> Project Name </option>
@@ -28,5 +29,4 @@ export class ProjectForm extends Component {
   }
 }
 
-
-export default ProjectForm;
+export default PaletteForm;

@@ -19,7 +19,6 @@ export class App extends Component {
   }
 } 
 
-
 export default App;
 
  // Component.propTypes = {

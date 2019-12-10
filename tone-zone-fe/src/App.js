@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
-import { Header } from '../src/containers/Header/Header'
-// import PropTypes from 'prop-types';
+import { Header } from '../src/containers/Header/Header';
+import { Main } from '../src/containers/Main/Main';
 
 
 export class App extends Component {
@@ -14,6 +14,7 @@ export class App extends Component {
     return (
       <div>
         <Header />
+        <Main />
       </div>
     )
   }

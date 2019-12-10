@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ActionContainer = () => {
+export const ActionContainer = () => {
   return (
     <section>
       <p> Logo </p>

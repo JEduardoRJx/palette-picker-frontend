@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../../variables.scss'
 import './PaletteForm.scss';
 
 export class PaletteForm extends Component {

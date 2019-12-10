@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 .palette-details {
   width: 33.3%;
   text-align: right;
@@ -5,20 +7,11 @@
 
 .palette-form {
   input {
-    width: 250px;
-    height: 40px;
-    font-size: 1.5em;
-    text-align: center;
-    border: 2px solid black;
+    @include base-input;
+    font-style: italic;
   }
 }
 
 .palette-select {
-  height: 40px;
-  width: 250px;
-  border: 2px solid black;
-  margin: 5px;
-  font-size: 1.5em;
-  text-align: center;
-
+  @include base-input;
 }

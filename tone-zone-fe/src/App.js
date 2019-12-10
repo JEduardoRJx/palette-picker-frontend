@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import { Header } from '../src/containers/Header/Header';
 import { Main } from '../src/containers/Main/Main';
-
+import { ColorContainer } from '../src/containers/ColorContainer/ColorContainer';
 
 export class App extends Component {
 
@@ -15,6 +15,7 @@ export class App extends Component {
       <div>
         <Header />
         <Main />
+        <ColorContainer />
       </div>
     )
   }

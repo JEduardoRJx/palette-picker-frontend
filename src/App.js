@@ -7,13 +7,14 @@ import { ColorContainer } from '../src/containers/ColorContainer/ColorContainer'
 export class App extends Component {
 
   async componentDidMount() {
-
+    await fetch(process.env.REACT_APP_BACKEND_URL + '/')
   }
 
   render() {
     return (
       <div>
         <Header />
+        <small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small>
         <Main />
         <ColorContainer />
       </div>

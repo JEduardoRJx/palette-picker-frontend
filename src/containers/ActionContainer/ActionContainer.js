@@ -1,6 +1,6 @@
 import React from 'react';
 import './ActionContainer.scss';
-import logo from '../../colorwheel.jpg'
+import logo from '../../colorwheel.png'
 
 export const ActionContainer = () => {
   return (

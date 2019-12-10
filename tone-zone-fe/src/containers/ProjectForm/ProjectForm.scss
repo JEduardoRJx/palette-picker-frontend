@@ -1,3 +1,17 @@
+@import "../../variables.scss";
+
 .project-details {
   width: 33.3%;
+  text-align: left;
+}
+
+.project-form {
+  input {
+    @include base-input;
+    font-style: italic;
+  }
+}
+
+.project-select {
+  @include base-input;
 }

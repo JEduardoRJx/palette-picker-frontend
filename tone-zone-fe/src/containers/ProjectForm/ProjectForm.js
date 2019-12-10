@@ -16,10 +16,9 @@ export class ProjectForm extends Component {
     return (
       <section className="project-details">
         <form className="project-form">
-          Enter Project Name: <input type="text" name="projectName"></input>
-          <input type="submit"></input>
+         <input type="text" name="projectName" placeholder="Enter Project Name"></input>
         </form>
-        <select>
+        <select className="project-select">
           <option value="Project Name"> Project Name </option>
           <option value="Project Name 1"> Project 1 </option>
           <option value="Project Name 2"> Project 2 </option>

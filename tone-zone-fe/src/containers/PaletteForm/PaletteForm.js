@@ -17,8 +17,7 @@ export class PaletteForm extends Component {
     return (
       <section className="palette-details">
         <form className="palette-form">
-          Enter Palette Name: <input type="text" name="projectName"></input>
-        <input type="submit"></input>
+          <input type="text" name="projectName" placeholder="Enter Palette Name"></input>
         </form>
         <select>
           <option value="Project Name"> Project Name </option>

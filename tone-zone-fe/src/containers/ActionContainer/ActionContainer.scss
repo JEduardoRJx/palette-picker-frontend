@@ -1,0 +1,71 @@
+@import '../../variables.scss';
+
+.action-container {
+  text-align: center;
+  width: 33.3%;
+}
+
+.randomize-btn {
+  background-color: #2e99a5;
+  border-radius: 25px;
+  box-shadow: 0 9px #999;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.5em;
+  height: 50px;
+  margin: 5px;
+  width: 150px;
+  &:hover { 
+    background-color: #11748d;
+    font-style: italic;
+  }
+  &:active {
+    background-color: #11748d;
+    font-style: italic;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+}
+
+
+
+.save-btn {
+  background-color: #4CAF50;
+  border-radius: 25px;
+  box-shadow: 0 9px #999;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.5em;
+  font-weight: 700;
+  height: 50px;
+  margin: 5px;
+  width: 150px;
+  &:hover {
+    background-color: #118d30;
+    font-style: italic;
+  }
+  &:active {
+    background-color: #118d30;
+    font-style: italic;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+}
+
+.logo {
+  height: 100px;
+  width: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

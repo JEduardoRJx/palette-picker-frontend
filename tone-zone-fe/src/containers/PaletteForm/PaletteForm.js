@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import '../../variables.scss'
+import './PaletteForm.scss';
 
 export class PaletteForm extends Component {
   constructor() {
@@ -16,13 +18,12 @@ export class PaletteForm extends Component {
     return (
       <section className="palette-details">
         <form className="palette-form">
-          Enter Palette Name: <input type="text" name="projectName"></input>
-        <input type="submit"></input>
+          <input type="text" name="projectName" placeholder="Enter Palette Name"></input>
         </form>
-        <select>
-          <option value="Project Name"> Project Name </option>
-          <option value="Project Name 1"> Project 1 </option>
-          <option value="Project Name 2"> Project 2 </option>
+        <select className="palette-select">
+          <option value="Palette Name"> Select a Palette </option>
+          <option value="Palette Name 1"> Palette 1 </option>
+          <option value="Palette Name 2"> Palette 2 </option>
         </select>
       </section>
     )

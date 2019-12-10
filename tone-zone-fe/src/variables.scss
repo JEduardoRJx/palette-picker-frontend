@@ -1,1 +1,12 @@
-// $var-name: var-value;
+@mixin base-input {
+  height: 40px;
+  width: 250px;
+  font-size: 1.5em;
+  text-align: center;
+  border: 2px solid black;
+  margin: 5px;
+}
+
+@mixin rainbow-theme {
+  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+} 

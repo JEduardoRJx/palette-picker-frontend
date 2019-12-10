@@ -1,3 +1,12 @@
+@import '../../variables.scss';
+
+.header-bottom {
+  height: 25px;
+  @include rainbow-theme;
+  // background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+}
+
+
 h1 {
   text-align: center;
 }

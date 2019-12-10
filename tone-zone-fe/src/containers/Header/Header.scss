@@ -1,10 +1,9 @@
-// header {
-//   // border-bottom: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
-// }
+@import '../../variables.scss';
 
 .header-bottom {
   height: 25px;
-  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+  @include rainbow-theme;
+  // background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
 }
 
 

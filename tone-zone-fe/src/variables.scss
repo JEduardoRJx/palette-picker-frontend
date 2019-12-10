@@ -7,3 +7,6 @@
   margin: 5px;
 }
 
+@mixin rainbow-theme {
+  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+} 

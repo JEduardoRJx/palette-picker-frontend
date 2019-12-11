@@ -1,6 +1,6 @@
 import React from 'react';
 import './ActionContainer.scss';
-import logo from '../../colorwheel.png'
+import logo from '../../images/colorwheel.png'
 
 export const ActionContainer = ({ randomizeColors }) => {
   return (

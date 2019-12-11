@@ -12,7 +12,8 @@ export class App extends Component {
       currentUserId: 2,
       projects: [],
       palettes: [],
-      colors: []
+      colors: [],
+      errorMessage: ''
     }
   }
 
@@ -22,28 +23,20 @@ export class App extends Component {
       const baseUrl = process.env.REACT_APP_BACKEND_URL + '/'
       const defaultUserProjectsUrl = 'api/v1/2/projects';
       const defaultUserProjects = await fetchData(`${baseUrl}${defaultUserProjectsUrl}`)
-      console.log("default", defaultUserProjects)
       this.setState({ projects: defaultUserProjects })
-      console.log("State", this.state.projects)
       this.fetchHelper()
     } catch(error) {
-
+      this.setState({errorMessage: error})
     }
   }
 
  fetchHelper = async () => {
     let palettes = this.state.projects.map(async (project) => {
-      console.log("ID",project.id)
       let url = `${process.env.REACT_APP_BACKEND_URL}/api/v1/2/projects/${project.id}/palettes`
-      console.log("url", url)
-      let info = await fetchData(`${process.env.REACT_APP_BACKEND_URL}/api/v1/2/projects/${project.id}/palettes`)
-      console.log("info", info)
+      let info = await fetchData(url)
       return info
     })
-    console.log("PALETTES", Promise.all(palettes))
-    this.setState({ palettes: await Promise.all(palettes)})
-    console.log("STATEY- Palettes", this.state.palettes)
-  
+    this.setState({ palettes: await Promise.all(palettes)})  
   }
 
   randomizeColors = () => {

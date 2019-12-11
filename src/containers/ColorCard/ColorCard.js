@@ -1,11 +1,13 @@
 import React from 'react';
 import './ColorCard.scss';
 
-export const ColorCard = () => {
+export const ColorCard = ({ colorInfo }) => {
+  const { color, isLocked} = colorInfo;
   return (
-    <div className="color-card">
+    <article className="color-card"
+      style={{backgroundColor: color}}>
       
-    </div>
+    </article>
   )
 }
 

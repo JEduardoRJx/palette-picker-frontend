@@ -11,11 +11,11 @@ export const ColorCard = ({ colorInfo, toggleLock }) => {
   return (
     <article className="color-card"
       style={{backgroundColor: color}}>
-      <button class='icon-btn' 
+      <button className='icon-btn' 
         type='button'
         onClick={e => toggleLock(e)}>
-        <img class='lock-icon' src={icon} alt={description} />
-      <h3 class='color-text'>{color.toUpperCase()}</h3>
+        <img className='lock-icon' src={icon} alt={description} />
+      <h3 className='color-text'>{color.toUpperCase()}</h3>
       </button>
     </article>
   )

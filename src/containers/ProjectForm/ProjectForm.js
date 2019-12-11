@@ -6,17 +6,32 @@ export class ProjectForm extends Component {
     super()
     this.state = {
       currentProject: {
-        name: ''
+        project_name: ''
       },
       allProjects: [],
       error: ''
     }
   }
+
+  handleChange = (e) => {
+    this.setState({error: ''})
+    let currentProject = this.state.currentProject;
+    currentProject = { ...currentProject, [e.target.name]: e.target.value};
+    this.setState({currentProject: currentProject})
+  }
+
   render() {
+
     return (
       <section className="project-details">
         <form className="project-form">
-         <input type="text" name="projectName" placeholder="Enter Project Name"></input>
+        <input 
+          type="text" 
+          name="project_name" 
+          placeholder="Enter Project Name" 
+          value = {this.state.name}
+          onChange = {this.handleChange}
+          />
         </form>
         <select className="project-select">
           <option value="Project Name"> Project Name </option>

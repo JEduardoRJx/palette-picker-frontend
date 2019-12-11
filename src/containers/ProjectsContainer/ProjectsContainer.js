@@ -11,6 +11,13 @@ export const ProjectsContainer = () => {
       <h1 className='project-name'>Select Project </h1>
       <div className='projects-wrapper'>
         {/* Display all projects here */}
+        <div className='individual-project'>
+          <h3 className='project-name'>Project Name</h3>
+          <button className='delete-btn'>
+            <img className='delete-icon' src={trash} />
+          </button>
+
+        </div>
       </div>
 
       <div className='palettes-wrapper'>

@@ -84,7 +84,7 @@ export class App extends Component {
       <div>
         <Header />
         <small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small>
-        <Main randomizeColors={this.randomizeColors}/>
+        <Main randomizeColors={this.randomizeColors} projects={this.state.projects}/>
         <ColorContainer colors={colors} toggleLock={this.toggleLock} />
       </div>
     )

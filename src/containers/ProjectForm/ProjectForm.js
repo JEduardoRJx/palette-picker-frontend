@@ -2,14 +2,22 @@ import React, { Component } from 'react';
 import './ProjectForm.scss'
 
 export class ProjectForm extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+    console.log("under SUPER", props)
     this.state = {
       currentProject: {
         project_name: ''
       },
       allProjects: [],
       error: ''
+    }
+  }
+
+  componentDidMount() {
+    if ( this.props) {
+      console.log("hiii")
+      this.setState({ allProjects: this.props.projects})
     }
   }
 
@@ -21,7 +29,14 @@ export class ProjectForm extends Component {
   }
 
   render() {
-
+    console.log("props", this.props)
+    console.log("in Project Form ", this.state.allProjects)
+    let { projects } = this.props;
+    // console.log("props?", this.props)
+    let projectNames = projects.map(currentProject => {
+      return <option value={currentProject.project_name} key={currentProject.id}> {currentProject.project_name}  </option>
+    })
+    console.log("form: projectName", projectNames)
     return (
       <section className="project-details">
         <form className="project-form">
@@ -35,8 +50,7 @@ export class ProjectForm extends Component {
         </form>
         <select className="project-select">
           <option value="Project Name"> Select a Project </option>
-          <option value="Project Name 1"> Project 1 </option>
-          <option value="Project Name 2"> Project 2 </option>
+          { projectNames }
         </select>
       </section>
     )

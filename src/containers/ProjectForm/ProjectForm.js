@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom'
 import './ProjectForm.scss'
 
 export class ProjectForm extends Component {
@@ -38,6 +39,7 @@ export class ProjectForm extends Component {
           <option value="Project Name 1"> Project 1 </option>
           <option value="Project Name 2"> Project 2 </option>
         </select>
+        <NavLink to='/projects' className='view-allprojects-btn'>View All Projects</NavLink>
       </section>
     )
   }

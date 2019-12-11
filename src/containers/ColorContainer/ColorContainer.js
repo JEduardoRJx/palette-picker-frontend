@@ -3,8 +3,7 @@ import { ColorCard } from '../ColorCard/ColorCard';
 import './ColorContainer.scss';
 
 export const ColorContainer = ({ colors, toggleLock }) => {
-  const allColorCards = colors.map(color => {
-    console.log(color)
+    const allColorCards = colors.map(color => {
     return <ColorCard 
     colorInfo={color} 
     toggleLock={toggleLock}

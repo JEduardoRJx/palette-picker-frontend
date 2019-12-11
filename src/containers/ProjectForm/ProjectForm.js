@@ -34,7 +34,7 @@ export class ProjectForm extends Component {
           />
         </form>
         <select className="project-select">
-          <option value="Project Name"> Project Name </option>
+          <option value="Project Name"> Select a Project </option>
           <option value="Project Name 1"> Project 1 </option>
           <option value="Project Name 2"> Project 2 </option>
         </select>

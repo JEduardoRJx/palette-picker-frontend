@@ -2,11 +2,13 @@ import React from 'react';
 import { ColorCard } from '../ColorCard/ColorCard';
 import './ColorContainer.scss';
 
-export const ColorContainer = ({ colors }) => {
+export const ColorContainer = ({ colors, toggleLock }) => {
   const allColorCards = colors.map(color => {
+    console.log(color)
     return <ColorCard 
     colorInfo={color} 
-    key={color.color}/>
+    toggleLock={toggleLock}
+    key={color.color} />
   })
 
   return (

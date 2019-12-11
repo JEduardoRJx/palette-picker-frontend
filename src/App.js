@@ -31,13 +31,27 @@ export class App extends Component {
 
   randomizeColors = () => {
     let colors = [];
-    while (colors.length < 5) {
-      let randomColor = '#000000'.replace(/0/g, () => {
-        return (~~(Math.random()*16)).toString(16)
+    if (this.state.colors.length === 0) {
+      while (colors.length < 5) {
+        let randomColor = '#000000'.replace(/0/g, () => {
+          return (~~(Math.random()*16)).toString(16)
+        })
+        colors.push({ color: randomColor, isLocked: false })
+      }
+      this.setState({ colors })
+    } else {
+      let newColors = this.state.colors.map(color => {
+        if (color.isLocked === false) {
+          let randomColor = '#000000'.replace(/0/g, () => {
+                return (~~(Math.random()*16)).toString(16)
+              })
+            return { color: randomColor, isLocked: false };
+        } else {
+          return color;
+        }
       })
-      colors.push({ color: randomColor, isLocked: false })
+      this.setState({ colors: newColors })
     }
-    this.setState({ colors })
   }
 
   toggleLock = (e) => {

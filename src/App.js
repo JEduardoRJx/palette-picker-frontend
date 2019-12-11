@@ -14,16 +14,12 @@ export class App extends Component {
   }
 
   async componentDidMount() {
-    // await fetch(process.env.REACT_APP_BACKEND_URL + '/')
     this.randomizeColors()
     try {
-      const data = await fetch(process.env.REACT_APP_BACKEND_URL + '/')
-      // console.log("data", data)
       const baseUrl = process.env.REACT_APP_BACKEND_URL + '/'
       const defaultUserURL = 'api/v1/2/projects';
-      const defaultUser = await fetch(`${baseUrl}${defaultUserURL}`)
+      const defaultUser = await fetchData(`${baseUrl}${defaultUserURL}`)
       console.log("default", defaultUser)
-      // defaultUser will come back successfully however, I am getting "readable stream" when I try to log defaultUser.body //
     } catch(error) {
 
     }

@@ -3,6 +3,7 @@ import './App.scss';
 import { Header } from '../src/containers/Header/Header';
 import { Main } from '../src/containers/Main/Main';
 import { ColorContainer } from '../src/containers/ColorContainer/ColorContainer';
+import { fetchData } from './utils/apiCalls';
 
 export class App extends Component {
   constructor() {
@@ -13,8 +14,19 @@ export class App extends Component {
   }
 
   async componentDidMount() {
+    // await fetch(process.env.REACT_APP_BACKEND_URL + '/')
     this.randomizeColors()
-    await fetch(process.env.REACT_APP_BACKEND_URL + '/')
+    try {
+      const data = await fetch(process.env.REACT_APP_BACKEND_URL + '/')
+      // console.log("data", data)
+      const baseUrl = process.env.REACT_APP_BACKEND_URL + '/'
+      const defaultUserURL = 'api/v1/2/projects';
+      const defaultUser = await fetch(`${baseUrl}${defaultUserURL}`)
+      console.log("default", defaultUser)
+      // defaultUser will come back successfully however, I am getting "readable stream" when I try to log defaultUser.body //
+    } catch(error) {
+
+    }
   }
 
   randomizeColors = () => {

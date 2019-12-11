@@ -7,18 +7,32 @@ export class PaletteForm extends Component {
     super()
     this.state = {
       currentPalette: {
-        name: '',
+        palette_name: '',
         colors: []
       },
       allPalettes: [],
       error: ''
     }
   }
+
+  handleChange = (e) => {
+    this.setState({error: ''})
+    let currentPalette = this.state.currentPalette;
+    currentPalette = { ...currentPalette, [e.target.name]: e.target.value};
+    this.setState({currentPalette: currentPalette})
+  }
+
   render() {
     return (
       <section className="palette-details">
         <form className="palette-form">
-          <input type="text" name="projectName" placeholder="Enter Palette Name"></input>
+          <input 
+            type="text" 
+            name="palette_name" 
+            placeholder="Enter Palette Name"
+            value = {this.state.name}
+            onChange = {this.handleChange}
+          />
         </form>
         <select className="palette-select">
           <option value="Palette Name"> Select a Palette </option>

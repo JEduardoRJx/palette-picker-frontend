@@ -34,7 +34,7 @@ export class App extends Component {
       <div>
         <Header />
         <small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small>
-        <Main />
+        <Main randomizeColors={this.randomizeColors}/>
         <ColorContainer colors={colors}/>
       </div>
     )

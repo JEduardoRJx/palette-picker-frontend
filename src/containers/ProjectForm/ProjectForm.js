@@ -4,34 +4,23 @@ import './ProjectForm.scss'
 export class ProjectForm extends Component {
   constructor(props) {
     super(props)
-    console.log("under SUPER", props)
     this.state = {
-      currentProject: 'Select a project',
+      currentProject: '',
       error: ''
     }
   }
 
-  // componentDidMount() {
-  //   if ( this.props) {
-  //     console.log("hiii")
-  //     this.setState({ allProjects: this.props.projects})
-  //   }
-  // }
-
   handleInputChange = (e) => {
     this.setState({error: ''})
-    let currentProject = this.state.currentProject;
-    currentProject = { ...currentProject, [e.target.name]: e.target.value};
-    this.setState({currentProject: currentProject})
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   handleDropDownChange = (e) => {
-    console.log("in handle drop down", e.tar)
     this.setState({ currentProject: e.target.value})
   }
 
   render() {
-    console.log("props", this.props)
+    // console.log("props", this.props)
     console.log("in Project Form ", this.state)
     let { projects } = this.props;
     // console.log("props?", this.props)
@@ -43,7 +32,7 @@ export class ProjectForm extends Component {
         <form className="project-form">
         <input 
           type="text" 
-          name="project_name" 
+          name="currentProject" 
           placeholder="Enter Project Name" 
           value = {this.state.name}
           onChange = {this.handleInputChange}

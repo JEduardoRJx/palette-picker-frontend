@@ -11,7 +11,7 @@ export const ColorCard = ({ colorInfo }) => {
   return (
     <article className="color-card"
       style={{backgroundColor: color}}>
-      <button class='icon-btn'>
+      <button class='icon-btn' type='button'>
         <img class='lock-icon' src={icon} alt={description} />
       <h3 class='color-text'>{color.toUpperCase()}</h3>
       </button>

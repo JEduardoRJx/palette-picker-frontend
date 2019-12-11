@@ -20,10 +20,7 @@ export class ProjectForm extends Component {
   }
 
   render() {
-    // console.log("props", this.props)
-    console.log("in Project Form ", this.state)
     let { projects } = this.props;
-    // console.log("props?", this.props)
     let projectNames = projects.map(currentProject => {
       return <option value={currentProject.project_name} key={currentProject.id}> {currentProject.project_name}  </option>
     })
@@ -33,13 +30,13 @@ export class ProjectForm extends Component {
         <input 
           type="text" 
           name="currentProject" 
-          placeholder="Enter Project Name" 
+          placeholder="Enter New Project Name" 
           value = {this.state.name}
           onChange = {this.handleInputChange}
           />
         </form>
         <select className="project-select" onChange={(event) => this.handleDropDownChange(event)}>
-          <option value="Project Name"> Select a Project </option>
+          <option value="Project Name"> Select existing Project </option>
           { projectNames }
         </select>
       </section>

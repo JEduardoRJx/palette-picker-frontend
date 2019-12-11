@@ -9,6 +9,9 @@ export class App extends Component {
   constructor() {
     super();
     this.state = {
+      currentUserId: 2,
+      projects: [],
+      palettes: [],
       colors: []
     }
   }
@@ -17,14 +20,30 @@ export class App extends Component {
     this.randomizeColors()
     try {
       const baseUrl = process.env.REACT_APP_BACKEND_URL + '/'
-      const defaultUserURL = 'api/v1/2/projects';
-      const defaultUser = await fetchData(`${baseUrl}${defaultUserURL}`)
-      console.log("default", defaultUser)
-      this.setState({ colors: defaultUser.body })
-      console.log("State", this.state.colors)
+      const defaultUserProjectsUrl = 'api/v1/2/projects';
+      const defaultUserProjects = await fetchData(`${baseUrl}${defaultUserProjectsUrl}`)
+      console.log("default", defaultUserProjects)
+      this.setState({ projects: defaultUserProjects })
+      console.log("State", this.state.projects)
+      this.fetchHelper()
     } catch(error) {
-      
+
     }
+  }
+
+ fetchHelper = async () => {
+    let palettes = this.state.projects.map(async (project) => {
+      console.log("ID",project.id)
+      let url = `${process.env.REACT_APP_BACKEND_URL}/api/v1/2/projects/${project.id}/palettes`
+      console.log("url", url)
+      let info = await fetchData(`${process.env.REACT_APP_BACKEND_URL}/api/v1/2/projects/${project.id}/palettes`)
+      console.log("info", info)
+      return info
+    })
+    console.log("PALETTES", Promise.all(palettes))
+    this.setState({ palettes: await Promise.all(palettes)})
+    console.log("STATEY- Palettes", this.state.palettes)
+  
   }
 
   randomizeColors = () => {

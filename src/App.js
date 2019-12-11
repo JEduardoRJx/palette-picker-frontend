@@ -20,8 +20,10 @@ export class App extends Component {
       const defaultUserURL = 'api/v1/2/projects';
       const defaultUser = await fetchData(`${baseUrl}${defaultUserURL}`)
       console.log("default", defaultUser)
+      this.setState({ colors: defaultUser.body })
+      console.log("State", this.state.colors)
     } catch(error) {
-
+      
     }
   }
 

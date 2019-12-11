@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './App.scss';
+import { Route } from 'react-router-dom';
 import { Header } from '../src/containers/Header/Header';
 import { Main } from '../src/containers/Main/Main';
 import { ColorContainer } from '../src/containers/ColorContainer/ColorContainer';
+import { ProjectsContainer } from './containers/ProjectsContainer/ProjectsContainer'
 import { fetchData } from './utils/apiCalls';
 
 export class App extends Component {
@@ -72,10 +74,20 @@ export class App extends Component {
     const { colors } = this.state
     return (
       <div>
-        <Header />
-        <small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small>
-        <Main randomizeColors={this.randomizeColors}/>
-        <ColorContainer colors={colors} toggleLock={this.toggleLock} />
+        <Route exact path='/' render={() => 
+          <>
+            <Header />
+            <small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small>
+            <Main randomizeColors={this.randomizeColors}/>
+            <ColorContainer colors={colors} toggleLock={this.toggleLock} />
+          </>
+        } />
+        <Route path='/projects' render={() => 
+          <>
+            <Header />
+            <ProjectsContainer />
+          </>
+        } />
       </div>
     )
   }

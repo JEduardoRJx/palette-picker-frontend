@@ -41,21 +41,16 @@ export class App extends Component {
   }
 
   toggleLock = (e) => {
-    // BUG CODE:
-    // If you click anywhere else in the colorCard the app will break
-    // unless you click on the button icon
-    // potential conditial needed
-    const target = e.target.nextElementSibling.innerText;
-    console.log(target)
-    const cards = this.state.colors.map(color => {
-      console.log('color', color)
-      if (color.color === target.toLowerCase()) {
-        return {color: color.color, isLocked: !color.isLocked};
-      }
-      return color;
-    });
-    console.log("cards", cards)
-    this.setState({ colors: cards })
+    if (e.target.className === 'lock-icon') {
+      const target = e.target.nextElementSibling.innerText;
+      const cards = this.state.colors.map(color => {
+        if (color.color === target.toLowerCase()) {
+          return {color: color.color, isLocked: !color.isLocked};
+        }
+        return color;
+      });
+      this.setState({ colors: cards })
+    }
   }
 
   render() {

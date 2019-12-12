@@ -4,36 +4,8 @@ import trash from '../../images/trash.svg'
 
 
 export const ProjectsContainer = ({ deleteProject, deletePalette, projects, palettes }) => {
-  console.log('2', palettes)
-  // const displayPalettes = palettes.flat().map(palette => {
-  //   console.log("palette!!!!", palette)
-  //   console.log("project", project)
-  //   return (
-  //     <div className='palette' key={palette.id}>
-  //         <div className='palette-name-wraper' id={`${palette.id}`}>
-  //           <h3>{palette.palette_name}</h3>
-  //           <button className='delete-btn palette-trash' 
-  //             type='button' 
-  //             id={`${palette.id}`}
-  //             onClick={(e) => deletePalette(e)}>
-  //           <img className='delete-icon palette-trash' src={trash} id={`${palette.id}`} />
-  //           </button>
-  //         </div>
-  //         <div className='color-wrapper'>
-  //           <div className='color' style={{backgroundColor: palette.color1}}></div>
-  //           <div className='color' style={{backgroundColor: palette.color2}}></div>
-  //           <div className='color' style={{backgroundColor: palette.color3}}></div>
-  //           <div className='color' style={{backgroundColor: palette.color4}}></div>
-  //           <div className='color' style={{backgroundColor: palette.color5}}></div>
-  //         </div>
-  //     </div>
-    // )
-  // })
-
   const displayProjects = projects.map(project => {
     const displayPalettes = palettes.flat().map(palette => {
-      console.log("palette!!!!", palette)
-      console.log("project", project)
       if(palette.project_id === project.id) {
         return (
           <div className='palette' key={palette.id}>

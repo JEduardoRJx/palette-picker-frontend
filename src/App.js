@@ -131,7 +131,7 @@ fetchAllProjects = async () => {
 
   saveProject = async (e) => {
     if (e.target.className === "save-btn") {
-      if (this.state.currentProject === '' && this.state.currentPalette === '') {
+      if (this.state.currentProject === '' || this.state.currentPalette === '') {
         await this.setState({errorMessage: "Please ensure you have a project and palette name"})
       } else {
         let postedProject = await addProject(this.state.currentUserId, this.state.currentProject)

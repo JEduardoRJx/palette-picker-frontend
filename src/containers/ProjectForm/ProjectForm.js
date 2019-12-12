@@ -7,27 +7,31 @@ export class ProjectForm extends Component {
     super(props)
     this.state = {
       currentProject: '',
+      currentProjectName: '',
       error: '',
     }
   }
 
   handleInputChange = async (e) => {
     this.setState({error: ''})
+    this.setState({ currentProjectName: e.target.value})
     await this.setState({ [e.target.name]: e.target.value })
     let { trackCurrentProject } = this.props;
     trackCurrentProject(this.state.currentProject)
   }
 
   handleDropDownChange = async (e) => {
+    this.setState({ currentProjectName: e.target.options[e.target.options.selectedIndex].text})
     await this.setState({ currentProject: e.target.value})
     let { trackCurrentProject } = this.props;
     trackCurrentProject(this.state.currentProject)
   }
 
+
   render() {
     let { projects  } = this.props;
     let projectNames = projects.map(currentProject => {
-      return <option value={currentProject.id} key={currentProject.id}> {currentProject.project_name}  </option>
+      return <option value={currentProject.id} id={currentProject.project_name} key={currentProject.id}> {currentProject.project_name}  </option>
     })
 
     return (
@@ -46,6 +50,7 @@ export class ProjectForm extends Component {
           { projectNames }
         </select>
         <NavLink to='/projects' className='view-allprojects-btn'>View All Projects</NavLink>
+    <p> {this.state.currentProjectName} </p>
       </section>
     )
   }

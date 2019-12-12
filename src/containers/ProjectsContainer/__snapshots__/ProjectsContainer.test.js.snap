@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectsContainer  should match the snapshot  1`] = `
+<section
+  className="projects-container"
+>
+  <div
+    className="individual-project project"
+    id={3}
+    key="3"
+  >
+    <div
+      className="project-name-wrapper"
+    >
+      <h2
+        className="project-name"
+      >
+        spring
+      </h2>
+      <button
+        className="delete-btn project-trash"
+        id="3"
+        onClick={[Function]}
+        type="button"
+      >
+        <img
+          className="delete-icon project-trash"
+          id={3}
+          src="trash.svg"
+        />
+      </button>
+    </div>
+    <div
+      className="palette"
+      key="3"
+    >
+      <div
+        className="palette-name-wraper"
+        id="undefined"
+      >
+        <h3>
+          spring colors
+        </h3>
+        <button
+          className="delete-btn palette-trash"
+          id="3"
+          onClick={[Function]}
+          type="button"
+        >
+          <img
+            className="delete-icon palette-trash"
+            id="3"
+            src="trash.svg"
+          />
+        </button>
+      </div>
+      <div
+        className="color-wrapper"
+      >
+        <div
+          className="color"
+          style={
+            Object {
+              "backgroundColor": "#CECCCC",
+            }
+          }
+        />
+        <div
+          className="color"
+          style={
+            Object {
+              "backgroundColor": "#9D6381",
+            }
+          }
+        />
+        <div
+          className="color"
+          style={
+            Object {
+              "backgroundColor": "#FDECEF",
+            }
+          }
+        />
+        <div
+          className="color"
+          style={
+            Object {
+              "backgroundColor": "#0F110C",
+            }
+          }
+        />
+        <div
+          className="color"
+          style={
+            Object {
+              "backgroundColor": "#612940",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</section>
+`;

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorCard should match the snapshot  1`] = `
+<article
+  className="color-card"
+  style={
+    Object {
+      "backgroundColor": "#cecccc",
+    }
+  }
+>
+  <button
+    className="icon-btn"
+    onClick={[Function]}
+    type="button"
+  >
+    <img
+      alt="unlocked icon"
+      className="lock-icon"
+      src="unlocked.svg"
+    />
+    <h3
+      className="color-text"
+    >
+      #CECCCC
+    </h3>
+  </button>
+</article>
+`;

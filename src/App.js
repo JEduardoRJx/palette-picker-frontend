@@ -5,7 +5,7 @@ import { Header } from '../src/containers/Header/Header';
 import { Main } from '../src/containers/Main/Main';
 import { ColorContainer } from '../src/containers/ColorContainer/ColorContainer';
 import { ProjectsContainer } from './containers/ProjectsContainer/ProjectsContainer'
-import { fetchData, removeProject, addProject } from './utils/apiCalls';
+import { fetchData, removeProject, addProject, addPalette } from './utils/apiCalls';
 
 export class App extends Component {
   constructor() {
@@ -140,6 +140,10 @@ fetchAllProjects = async () => {
         let postedProject = await addProject(this.state.currentUserId, this.state.currentProject)
         let projectId = postedProject.id
         console.log("iddd", projectId)
+        let postedPalettes = await addPalette(this.state.currentUserId, projectId, this.state.currentPalette, this.state.colors)
+        console.log("PLEEEEASE", postedPalettes)
+        await this.fetchAllProjects()
+
       }
     }
   }

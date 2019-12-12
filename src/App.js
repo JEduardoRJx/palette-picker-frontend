@@ -14,6 +14,8 @@ export class App extends Component {
       currentUserId: 2,
       projects: [],
       palettes: [],
+      currentProject: '',
+      currentPalettes: '',
       colors: [],
       errorMessage: ''
     }
@@ -91,8 +93,13 @@ export class App extends Component {
     }
   }
 
+  trackCurrentProject = (currentProject) => {
+    console.log("tackCurrentProject: App line 97: ", currentProject )
+    this.setState({ currentProject })
+  }
+
   render() {
-    console.log(this.state)
+    console.log("STATE APP:", this.state)
     const { colors } = this.state
     return (
       <div>
@@ -100,7 +107,7 @@ export class App extends Component {
           <>
             <Header />
             <small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small>
-            <Main randomizeColors={this.randomizeColors} projects={this.state.projects}/>
+            <Main randomizeColors={this.randomizeColors} projects={this.state.projects} palettes={this.state.palettes} trackCurrentProject={this.trackCurrentProject}/>
             <ColorContainer colors={colors} toggleLock={this.toggleLock} />
           </>
         } />

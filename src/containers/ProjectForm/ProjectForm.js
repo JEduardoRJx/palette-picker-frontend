@@ -14,6 +14,8 @@ export class ProjectForm extends Component {
   handleInputChange = (e) => {
     this.setState({error: ''})
     this.setState({ [e.target.name]: e.target.value })
+    let { trackCurrentProject } = this.props;
+    trackCurrentProject(this.state.currentProject)
   }
 
   handleDropDownChange = (e) => {
@@ -21,7 +23,8 @@ export class ProjectForm extends Component {
   }
 
   render() {
-    let { projects } = this.props;
+    let { projects  } = this.props;
+    // console.log("in projectForm", trackCurrentProject)
     let projectNames = projects.map(currentProject => {
       return <option value={currentProject.project_name} key={currentProject.id}> {currentProject.project_name}  </option>
     })

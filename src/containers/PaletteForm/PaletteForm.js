@@ -3,14 +3,11 @@ import '../../variables.scss'
 import './PaletteForm.scss';
 
 export class PaletteForm extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      currentPalette: {
-        palette_name: '',
-        colors: []
-      },
-      allPalettes: [],
+      currentPalette: '',
+      colors: [],
       error: ''
     }
   }
@@ -23,6 +20,12 @@ export class PaletteForm extends Component {
   }
 
   render() {
+    console.log("props", this.props)
+    // const { palettes } = this.props;
+    // const paletteNames = palettes.map(currentPalette => {
+    //   console.log("currentP", currentPalette)
+    //   return <option value={currentPalette.palette_name} key={currentPalette.id}> {currentPalette.palette_name} </option>
+    // })
     return (
       <section className="palette-details">
         <form className="palette-form">
@@ -36,8 +39,9 @@ export class PaletteForm extends Component {
         </form>
         <select className="palette-select">
           <option value="Palette Name"> Select a Palette </option>
-          <option value="Palette Name 1"> Palette 1 </option>
-          <option value="Palette Name 2"> Palette 2 </option>
+          {/* {paletteNames} */}
+          {/* <option value="Palette Name 1"> Palette 1 </option> */}
+          {/* <option value="Palette Name 2"> Palette 2 </option> */}
         </select>
       </section>
     )

@@ -5,13 +5,13 @@ import { PaletteForm } from '../PaletteForm/PaletteForm';
 import './Main.scss';
 // import PropTypes from 'prop-types';
 
-export const Main = ({ randomizeColors, projects, palettes, trackCurrentProject, currentProjectId }) => {
+export const Main = ({ randomizeColors, projects, palettes, trackCurrentProject, currentProjectId, trackCurrentPalette }) => {
   console.log("in Main - cpID", currentProjectId)
   return (
     <section className="main-section"> 
     <ProjectForm projects={projects} trackCurrentProject={trackCurrentProject}/>
     <ActionContainer randomizeColors={randomizeColors}/>
-    <PaletteForm palettes={palettes} currentProjectId={currentProjectId}/>
+    <PaletteForm palettes={palettes} currentProjectId={currentProjectId} trackCurrentPalette={trackCurrentPalette}/>
     </section>
   )
 }

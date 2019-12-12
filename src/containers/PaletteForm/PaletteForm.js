@@ -12,11 +12,19 @@ export class PaletteForm extends Component {
     }
   }
 
-  handleChange = (e) => {
+  handleChange = async (e) => {
     this.setState({error: ''})
     let currentPalette = this.state.currentPalette;
     currentPalette = { ...currentPalette, [e.target.name]: e.target.value};
-    this.setState({currentPalette: currentPalette})
+    await this.setState({currentPalette: currentPalette})
+    let { trackCurrentPalette } = this.props;
+    trackCurrentPalette(this.state.currentPalette)
+  }
+
+  handleDropDownChange = async (e) => {
+    await this.setState({ currentPalette: e.target.value})
+    let { trackCurrentPalette } = this.props;
+    trackCurrentPalette(this.state.currentPalette)
   }
 
   render() {
@@ -39,7 +47,7 @@ export class PaletteForm extends Component {
             onChange = {this.handleChange}
           />
         </form>
-        <select className="palette-select">
+        <select className="palette-select" onChange={(event) => this.handleDropDownChange(event)}>
           <option value="Palette Name"> Select a Palette </option>
           {paletteNames}
         </select>

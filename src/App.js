@@ -15,7 +15,7 @@ export class App extends Component {
       projects: [],
       palettes: [],
       currentProject: '',
-      currentPalettes: '',
+      currentPalette: '',
       colors: [],
       errorMessage: ''
     }
@@ -97,6 +97,10 @@ export class App extends Component {
     this.setState({ currentProject })
   }
 
+  trackCurrentPalette = (currentPalette) => {
+    this.setState({ currentPalette })
+  }
+
   render() {
     console.log("STATE APP:", this.state)
     const { colors } = this.state
@@ -112,6 +116,7 @@ export class App extends Component {
               palettes={this.state.palettes} 
               trackCurrentProject={this.trackCurrentProject}
               currentProjectId={this.state.currentProject}
+              trackCurrentPalette={this.trackCurrentPalette}
               />
             <ColorContainer colors={colors} toggleLock={this.toggleLock} />
           </>

@@ -72,7 +72,7 @@ export class App extends Component {
     if (e.target.className === 'lock-icon') {
       const target = e.target.nextElementSibling.innerText;
       const cards = this.state.colors.map(color => {
-        if (color.color === target.toLowerCase()) {
+        if (color.color === target.toLowerCase() || color.color === target) {
           return {color: color.color, isLocked: !color.isLocked};
         }
         return color;

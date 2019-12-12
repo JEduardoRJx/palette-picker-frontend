@@ -11,24 +11,34 @@ export class App extends Component {
   constructor() {
     super();
     this.state = {
-      colors: []
+      currentUserId: 2,
+      projects: [],
+      palettes: [],
+      colors: [],
+      errorMessage: ''
     }
   }
 
   async componentDidMount() {
-    // await fetch(process.env.REACT_APP_BACKEND_URL + '/')
     this.randomizeColors()
     try {
-      const data = await fetch(process.env.REACT_APP_BACKEND_URL + '/')
-      // console.log("data", data)
       const baseUrl = process.env.REACT_APP_BACKEND_URL + '/'
-      const defaultUserURL = 'api/v1/2/projects';
-      const defaultUser = await fetch(`${baseUrl}${defaultUserURL}`)
-      console.log("default", defaultUser)
-      // defaultUser will come back successfully however, I am getting "readable stream" when I try to log defaultUser.body //
+      const defaultUserProjectsUrl = 'api/v1/2/projects';
+      const defaultUserProjects = await fetchData(`${baseUrl}${defaultUserProjectsUrl}`)
+      this.setState({ projects: defaultUserProjects })
+      this.fetchHelper()
     } catch(error) {
-
+      this.setState({errorMessage: error})
     }
+  }
+
+ fetchHelper = async () => {
+    let palettes = this.state.projects.map(async (project) => {
+      let url = `${process.env.REACT_APP_BACKEND_URL}/api/v1/2/projects/${project.id}/palettes`
+      let info = await fetchData(url)
+      return info
+    })
+    this.setState({ palettes: await Promise.all(palettes)})  
   }
 
   randomizeColors = () => {
@@ -90,7 +100,7 @@ export class App extends Component {
           <>
             <Header />
             <small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small>
-            <Main randomizeColors={this.randomizeColors}/>
+            <Main randomizeColors={this.randomizeColors} projects={this.state.projects}/>
             <ColorContainer colors={colors} toggleLock={this.toggleLock} />
           </>
         } />

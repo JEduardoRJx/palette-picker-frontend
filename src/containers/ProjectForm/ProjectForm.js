@@ -3,41 +3,43 @@ import { NavLink } from 'react-router-dom'
 import './ProjectForm.scss'
 
 export class ProjectForm extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      currentProject: {
-        project_name: ''
-      },
-      allProjects: [],
-      error: ''
+      currentProject: '',
+      error: '',
     }
   }
 
-  handleChange = (e) => {
+  handleInputChange = (e) => {
     this.setState({error: ''})
-    let currentProject = this.state.currentProject;
-    currentProject = { ...currentProject, [e.target.name]: e.target.value};
-    this.setState({currentProject: currentProject})
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+  handleDropDownChange = (e) => {
+    this.setState({ currentProject: e.target.value})
   }
 
   render() {
+    let { projects } = this.props;
+    let projectNames = projects.map(currentProject => {
+      return <option value={currentProject.project_name} key={currentProject.id}> {currentProject.project_name}  </option>
+    })
 
     return (
       <section className="project-details">
         <form className="project-form">
         <input 
           type="text" 
-          name="project_name" 
-          placeholder="Enter Project Name" 
+          name="currentProject" 
+          placeholder="Enter New Project Name" 
           value = {this.state.name}
-          onChange = {this.handleChange}
+          onChange = {this.handleInputChange}
           />
         </form>
-        <select className="project-select">
-          <option value="Project Name"> Select a Project </option>
-          <option value="Project Name 1"> Project 1 </option>
-          <option value="Project Name 2"> Project 2 </option>
+        <select className="project-select" onChange={(event) => this.handleDropDownChange(event)}>
+          <option value="Project Name"> Select existing Project </option>
+          { projectNames }
         </select>
         <NavLink to='/projects' className='view-allprojects-btn'>View All Projects</NavLink>
       </section>

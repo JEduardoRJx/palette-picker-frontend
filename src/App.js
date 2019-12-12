@@ -100,24 +100,19 @@ export class App extends Component {
   trackCurrentPalette = (currentPalette) => {
     this.setState({ currentPalette })
     let currentSelectedPalette = this.state.palettes.flat().find(palette => {
-      console.log("palette", palette)
       return palette.palette_name === currentPalette && palette.project_id === parseInt(this.state.currentProject)
     })
     let rawKeys = Object.keys(currentSelectedPalette)
     let colorKeys = [...rawKeys].filter(key => key.includes('color'))
     let currentPaletteColors = colorKeys.reduce((acc, currKey) => {
       let color = {
-        [currKey]: currentSelectedPalette[currKey],
-        isLocked: false
+        color: currentSelectedPalette[currKey],
+        isLocked: true
       }
       acc.push(color)
       return acc
     }, [])
-    console.log("currrr", currentSelectedPalette)
-    console.log("rawKeys", rawKeys)
-    console.log("colorkeys", colorKeys)
-    console.log("MAGIK", currentPaletteColors)
-    // this.setState({ colors: currentPaletteColors })
+    this.setState({ colors: currentPaletteColors })
   }
 
   render() {

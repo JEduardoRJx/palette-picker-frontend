@@ -5,6 +5,7 @@ import unlocked from '../../images/unlocked.svg';
 
 export const ColorCard = ({ colorInfo, toggleLock }) => {
   const { color, isLocked} = colorInfo;
+  console.log("Color", color)
   const icon = isLocked ? locked : unlocked;
   const description = isLocked ? 'locked icon' : 'unlocked icon'
   

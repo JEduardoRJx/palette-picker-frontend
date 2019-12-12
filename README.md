@@ -11,3 +11,6 @@ Tone Zone, a web based an application, allows users to create random palettes, l
 
 ## To Try It Out
 [Create your own palettes!](https://tone-zone.herokuapp.com/)
+
+## Project Board
+- [Link to Project Board](https://github.com/users/JEduardoRJx/projects/1)

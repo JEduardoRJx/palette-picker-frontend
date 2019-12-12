@@ -27,7 +27,7 @@ export class ProjectForm extends Component {
   render() {
     let { projects  } = this.props;
     let projectNames = projects.map(currentProject => {
-      return <option value={currentProject.project_name} key={currentProject.id}> {currentProject.project_name}  </option>
+      return <option value={currentProject.id} key={currentProject.id}> {currentProject.project_name}  </option>
     })
 
     return (

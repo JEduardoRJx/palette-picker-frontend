@@ -21,11 +21,18 @@ export class PaletteForm extends Component {
 
   render() {
     console.log("props", this.props)
-    // const { palettes } = this.props;
-    // const paletteNames = palettes.map(currentPalette => {
-    //   console.log("currentP", currentPalette)
-    //   return <option value={currentPalette.palette_name} key={currentPalette.id}> {currentPalette.palette_name} </option>
-    // })
+    const { palettes, currentProjectId } = this.props;
+    console.log("pale", typeof parseInt(currentProjectId))
+    console.log("allPalettes", palettes.flat())
+    const paletteNames = palettes.flat().map(currentPalette => {
+      console.log("currentP", currentPalette)
+      if (currentPalette.project_id === parseInt(currentProjectId)) {
+        console.log("truuuuue")
+        return <option value={currentPalette.palette_name} key={currentPalette.id}> {currentPalette.palette_name} </option>
+      } else {
+        return
+      }
+    })
     return (
       <section className="palette-details">
         <form className="palette-form">
@@ -39,7 +46,7 @@ export class PaletteForm extends Component {
         </form>
         <select className="palette-select">
           <option value="Palette Name"> Select a Palette </option>
-          {/* {paletteNames} */}
+          {paletteNames}
           {/* <option value="Palette Name 1"> Palette 1 </option> */}
           {/* <option value="Palette Name 2"> Palette 2 </option> */}
         </select>

@@ -94,7 +94,6 @@ export class App extends Component {
   }
 
   trackCurrentProject = (currentProject) => {
-    // console.log("tackCurrentProject: App line 97: ", currentProject )
     this.setState({ currentProject })
   }
 
@@ -107,7 +106,13 @@ export class App extends Component {
           <>
             <Header />
             <small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small>
-            <Main randomizeColors={this.randomizeColors} projects={this.state.projects} palettes={this.state.palettes} trackCurrentProject={this.trackCurrentProject}/>
+            <Main 
+              randomizeColors={this.randomizeColors} 
+              projects={this.state.projects} 
+              palettes={this.state.palettes} 
+              trackCurrentProject={this.trackCurrentProject}
+              currentProjectId={this.state.currentProject}
+              />
             <ColorContainer colors={colors} toggleLock={this.toggleLock} />
           </>
         } />

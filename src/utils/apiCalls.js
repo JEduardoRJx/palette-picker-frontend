@@ -40,4 +40,23 @@ export const addProject = async (user_id, project_name) => {
   if (!response.ok) {
     throw Error('Unable to post project. Please try again.')
   }
+  return response.json()
 }
+
+// export const addPalette = async (user_id, project_id, color_array) => {
+//   const url = `https://tone-zone-api.herokuapp.com/api/v1/${user_id}/projects`
+//   const options = {
+//     method: 'POST',
+//     body: JSON.stringify({
+//       project_name,
+//       user_id
+//     }),
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   }
+//   const response = await fetch(url, options)
+//   if (!response.ok) {
+//     throw Error('Unable to post project. Please try again.')
+//   }
+// }

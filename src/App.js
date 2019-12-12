@@ -134,14 +134,16 @@ fetchAllProjects = async () => {
 
   saveProject = async (e) => {
     if (e.target.className === "save-btn") {
-      if (this.currentProject === '' || this.currentPalette === '') {
-        this.setState({errorMessage: "Please ensure you have a project and palette name"})
+      if (this.state.currentProject === '' && this.state.currentPalette === '') {
+        await this.setState({errorMessage: "Please ensure you have a project and palette name"})
       } else {
-        await addProject(this.state.currentUserId, this.state.currentProject)
-          .then(async () => this.fetchAllProjects())
+        let postedProject = await addProject(this.state.currentUserId, this.state.currentProject)
+        let projectId = postedProject.id
+        console.log("iddd", projectId)
       }
     }
   }
+  // .then(async () => this.fetchAllProjects())
 
   render() {
     console.log("STATE APP:", this.state)
@@ -160,6 +162,7 @@ fetchAllProjects = async () => {
               currentProjectId={this.state.currentProject}
               trackCurrentPalette={this.trackCurrentPalette}
               saveProject={this.saveProject}
+              errorMessage={this.state.errorMessage}
               />
             <ColorContainer colors={colors} toggleLock={this.toggleLock} />
           </>

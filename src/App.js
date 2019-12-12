@@ -5,7 +5,7 @@ import { Header } from '../src/containers/Header/Header';
 import { Main } from '../src/containers/Main/Main';
 import { ColorContainer } from '../src/containers/ColorContainer/ColorContainer';
 import { ProjectsContainer } from './containers/ProjectsContainer/ProjectsContainer'
-import { fetchData, removeProject } from './utils/apiCalls';
+import { fetchData, removeProject, addProject, addPalette } from './utils/apiCalls';
 
 export class App extends Component {
   constructor() {
@@ -44,7 +44,10 @@ fetchAllProjects = async () => {
       let info = await fetchData(url)
       return info
     })
-    this.setState({ palettes: await Promise.all(palettes)})  
+    
+    palettes = await Promise.all(palettes)
+    const cleanPalettes = palettes.filter(palettes => palettes !== undefined )
+    this.setState({ palettes: cleanPalettes})  
   }
 
   randomizeColors = () => {
@@ -94,9 +97,7 @@ fetchAllProjects = async () => {
   }
 
   deletePalette = (e) => {
-    console.log(e.target)
     if (e.target.className.includes('palette-trash')) {
-      console.log('hey')
       const paletteId = parseInt(e.target.id)
       console.log('paletteId', paletteId)
     }
@@ -106,26 +107,42 @@ fetchAllProjects = async () => {
     this.setState({ currentProject })
   }
 
-  trackCurrentPalette = (currentPalette) => {
-    this.setState({ currentPalette })
+  trackCurrentPalette = async (currentPalette) => {
+    await this.setState({ currentPalette })
     let currentSelectedPalette = this.state.palettes.flat().find(palette => {
       return palette.palette_name === currentPalette && palette.project_id === parseInt(this.state.currentProject)
     })
-    let rawKeys = Object.keys(currentSelectedPalette)
-    let colorKeys = [...rawKeys].filter(key => key.includes('color'))
-    let currentPaletteColors = colorKeys.reduce((acc, currKey) => {
-      let color = {
-        color: currentSelectedPalette[currKey],
-        isLocked: true
-      }
-      acc.push(color)
+    if (currentSelectedPalette === undefined) {
+      return
+    } else {
+      let rawKeys = Object.keys(currentSelectedPalette)
+      let colorKeys = [...rawKeys].filter(key => key.includes('color'))
+      let currentPaletteColors = colorKeys.reduce((acc, currKey) => {
+        let color = {
+          color: currentSelectedPalette[currKey],
+          isLocked: true
+        }
+        acc.push(color)
       return acc
-    }, [])
+      }, [])
     this.setState({ colors: currentPaletteColors })
+    }
+  }
+
+  saveProject = async (e) => {
+    if (e.target.className === "save-btn") {
+      if (this.state.currentProject === '' && this.state.currentPalette === '') {
+        await this.setState({errorMessage: "Please ensure you have a project and palette name"})
+      } else {
+        let postedProject = await addProject(this.state.currentUserId, this.state.currentProject)
+        let projectId = postedProject.id
+        await addPalette(this.state.currentUserId, projectId, this.state.currentPalette, this.state.colors)
+        await this.fetchAllProjects()
+      }
+    }
   }
 
   render() {
-    console.log("STATE APP:", this.state)
     const { colors } = this.state
     return (
       <div>
@@ -140,6 +157,8 @@ fetchAllProjects = async () => {
               trackCurrentProject={this.trackCurrentProject}
               currentProjectId={this.state.currentProject}
               trackCurrentPalette={this.trackCurrentPalette}
+              saveProject={this.saveProject}
+              errorMessage={this.state.errorMessage}
               />
             <ColorContainer colors={colors} toggleLock={this.toggleLock} />
           </>

@@ -14,9 +14,7 @@ export class PaletteForm extends Component {
 
   handleChange = async (e) => {
     this.setState({error: ''})
-    let currentPalette = this.state.currentPalette;
-    currentPalette = { ...currentPalette, [e.target.name]: e.target.value};
-    await this.setState({currentPalette: currentPalette})
+    await this.setState({[e.target.name]: e.target.value})
     let { trackCurrentPalette } = this.props;
     trackCurrentPalette(this.state.currentPalette)
   }
@@ -33,7 +31,7 @@ export class PaletteForm extends Component {
       if (currentPalette.project_id === parseInt(currentProjectId)) {
         return <option value={currentPalette.palette_name} key={currentPalette.id}> {currentPalette.palette_name} </option>
       } else {
-        return 
+        return currentPalette
       }
     })
     return (
@@ -41,7 +39,7 @@ export class PaletteForm extends Component {
         <form className="palette-form">
           <input 
             type="text" 
-            name="palette_name" 
+            name="currentPalette" 
             placeholder="Enter Palette Name"
             value = {this.state.name}
             onChange = {this.handleChange}

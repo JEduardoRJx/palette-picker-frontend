@@ -29,5 +29,8 @@ We used **InVision Studio** to create our design
 Screenshot of **Landing Page**
 <img width="1440" alt="Screen Shot 2019-12-12 at 9 32 15 AM" src="https://user-images.githubusercontent.com/48504854/70730528-601d7d80-1cc2-11ea-8816-8483ff83b8cf.png">
 
+Screenshot of **Lower Part of Landing Page**
+<img width="1440" alt="Screen Shot 2019-12-12 at 9 59 38 AM" src="https://user-images.githubusercontent.com/48504854/70732850-6f062f00-1cc6-11ea-8c59-ed5ff3cda0d3.png">
+
 Screenshot of **Projects Page**
 <img width="1440" alt="Screen Shot 2019-12-12 at 9 33 04 AM" src="https://user-images.githubusercontent.com/48504854/70730585-7e837900-1cc2-11ea-978a-41f79e5760b5.png">

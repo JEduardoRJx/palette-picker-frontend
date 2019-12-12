@@ -5,13 +5,13 @@ import { Header } from '../src/containers/Header/Header';
 import { Main } from '../src/containers/Main/Main';
 import { ColorContainer } from '../src/containers/ColorContainer/ColorContainer';
 import { ProjectsContainer } from './containers/ProjectsContainer/ProjectsContainer'
-import { fetchData } from './utils/apiCalls';
+import { fetchData, removeProject } from './utils/apiCalls';
 
 export class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentUserId: 2,
+      currentUserId: 1,
       projects: [],
       palettes: [],
       colors: [],
@@ -20,21 +20,25 @@ export class App extends Component {
   }
 
   async componentDidMount() {
-    this.randomizeColors()
-    try {
-      const baseUrl = process.env.REACT_APP_BACKEND_URL + '/'
-      const defaultUserProjectsUrl = 'api/v1/2/projects';
-      const defaultUserProjects = await fetchData(`${baseUrl}${defaultUserProjectsUrl}`)
-      this.setState({ projects: defaultUserProjects })
-      this.fetchHelper()
-    } catch(error) {
-      this.setState({errorMessage: error})
-    }
+    this.randomizeColors();
+    this.fetchAllProjects();
   }
+
+fetchAllProjects = async () => {
+  try {
+    const baseUrl = 'https://tone-zone-api.herokuapp.com/'
+    const defaultUserProjectsUrl = 'api/v1/1/projects';
+    const defaultUserProjects = await fetchData(`${baseUrl}${defaultUserProjectsUrl}`)
+    this.setState({ projects: defaultUserProjects })
+    this.fetchHelper()
+  } catch(error) {
+    this.setState({errorMessage: error})
+  }
+}
 
  fetchHelper = async () => {
     let palettes = this.state.projects.map(async (project) => {
-      let url = `${process.env.REACT_APP_BACKEND_URL}/api/v1/2/projects/${project.id}/palettes`
+      let url = `https://tone-zone-api.herokuapp.com/api/v1/1/projects/${project.id}/palettes`
       let info = await fetchData(url)
       return info
     })
@@ -79,15 +83,20 @@ export class App extends Component {
     }
   }
 
-  deleteProject = (e) => {
-    if (e.target.id === 'project') {
-      console.log('project')
+  deleteProject = async (e) => {
+    if (e.target.className.includes('project-trash')) {
+      const projectId = parseInt(e.target.id)
+      await removeProject(this.state.currentUserId, projectId)
+        .then(async () => this.fetchAllProjects())
     }
   }
 
   deletePalette = (e) => {
-    if (e.target.id === 'palette') {
-      console.log('palette')
+    console.log(e.target)
+    if (e.target.className.includes('palette-trash')) {
+      console.log('hey')
+      const paletteId = parseInt(e.target.id)
+      console.log('paletteId', paletteId)
     }
   }
 
@@ -107,7 +116,7 @@ export class App extends Component {
         <Route path='/projects' render={() => 
           <>
             <Header />
-            <ProjectsContainer deleteProject={this.deleteProject} deletePalette={this.deletePalette}/>
+            <ProjectsContainer deleteProject={this.deleteProject} deletePalette={this.deletePalette} projects={this.state.projects} palettes={this.state.palettes} />
           </>
         } />
       </div>

@@ -6,7 +6,6 @@ import './Main.scss';
 // import PropTypes from 'prop-types';
 
 export const Main = ({ randomizeColors, projects }) => {
-  console.log("in Main - Projects", projects)
   return (
     <section className="main-section"> 
     <ProjectForm projects={projects}/>

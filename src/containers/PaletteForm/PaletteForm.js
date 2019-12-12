@@ -31,7 +31,7 @@ export class PaletteForm extends Component {
       if (currentPalette.project_id === parseInt(currentProjectId)) {
         return <option value={currentPalette.palette_name} key={currentPalette.id}> {currentPalette.palette_name} </option>
       } else {
-        return currentPalette
+        return;
       }
     })
     return (

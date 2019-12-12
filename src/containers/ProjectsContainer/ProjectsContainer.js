@@ -4,6 +4,7 @@ import trash from '../../images/trash.svg'
 
 
 export const ProjectsContainer = ({ deleteProject, deletePalette, projects, palettes }) => {
+  console.log('2', palettes)
   const displayPalettes = palettes.map(palette => {
     return (
       <div className='palette' key={palette[0].id}>

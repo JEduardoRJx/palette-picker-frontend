@@ -106,22 +106,27 @@ fetchAllProjects = async () => {
     this.setState({ currentProject })
   }
 
-  trackCurrentPalette = (currentPalette) => {
-    this.setState({ currentPalette })
+  trackCurrentPalette = async (currentPalette) => {
+    await this.setState({ currentPalette })
     let currentSelectedPalette = this.state.palettes.flat().find(palette => {
       return palette.palette_name === currentPalette && palette.project_id === parseInt(this.state.currentProject)
     })
-    let rawKeys = Object.keys(currentSelectedPalette)
-    let colorKeys = [...rawKeys].filter(key => key.includes('color'))
-    let currentPaletteColors = colorKeys.reduce((acc, currKey) => {
-      let color = {
-        color: currentSelectedPalette[currKey],
-        isLocked: true
-      }
-      acc.push(color)
+    if (currentSelectedPalette === undefined) {
+      return
+    } else {
+      let rawKeys = Object.keys(currentSelectedPalette)
+      let colorKeys = [...rawKeys].filter(key => key.includes('color'))
+      let currentPaletteColors = colorKeys.reduce((acc, currKey) => {
+        let color = {
+          color: currentSelectedPalette[currKey],
+          isLocked: true
+        }
+        acc.push(color)
       return acc
-    }, [])
+      }, [])
     this.setState({ colors: currentPaletteColors })
+    }
+    
   }
 
   render() {

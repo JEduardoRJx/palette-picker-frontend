@@ -14,6 +14,8 @@ export class App extends Component {
       currentUserId: 1,
       projects: [],
       palettes: [],
+      currentProject: '',
+      currentPalette: '',
       colors: [],
       errorMessage: ''
     }
@@ -74,7 +76,7 @@ fetchAllProjects = async () => {
     if (e.target.className === 'lock-icon') {
       const target = e.target.nextElementSibling.innerText;
       const cards = this.state.colors.map(color => {
-        if (color.color === target.toLowerCase()) {
+        if (color.color === target.toLowerCase() || color.color === target) {
           return {color: color.color, isLocked: !color.isLocked};
         }
         return color;
@@ -100,8 +102,30 @@ fetchAllProjects = async () => {
     }
   }
 
+  trackCurrentProject = (currentProject) => {
+    this.setState({ currentProject })
+  }
+
+  trackCurrentPalette = (currentPalette) => {
+    this.setState({ currentPalette })
+    let currentSelectedPalette = this.state.palettes.flat().find(palette => {
+      return palette.palette_name === currentPalette && palette.project_id === parseInt(this.state.currentProject)
+    })
+    let rawKeys = Object.keys(currentSelectedPalette)
+    let colorKeys = [...rawKeys].filter(key => key.includes('color'))
+    let currentPaletteColors = colorKeys.reduce((acc, currKey) => {
+      let color = {
+        color: currentSelectedPalette[currKey],
+        isLocked: true
+      }
+      acc.push(color)
+      return acc
+    }, [])
+    this.setState({ colors: currentPaletteColors })
+  }
+
   render() {
-    console.log(this.state)
+    console.log("STATE APP:", this.state)
     const { colors } = this.state
     return (
       <div>
@@ -109,7 +133,14 @@ fetchAllProjects = async () => {
           <>
             <Header />
             <small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small>
-            <Main randomizeColors={this.randomizeColors} projects={this.state.projects}/>
+            <Main 
+              randomizeColors={this.randomizeColors} 
+              projects={this.state.projects} 
+              palettes={this.state.palettes} 
+              trackCurrentProject={this.trackCurrentProject}
+              currentProjectId={this.state.currentProject}
+              trackCurrentPalette={this.trackCurrentPalette}
+              />
             <ColorContainer colors={colors} toggleLock={this.toggleLock} />
           </>
         } />

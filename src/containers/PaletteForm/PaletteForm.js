@@ -3,26 +3,39 @@ import '../../variables.scss'
 import './PaletteForm.scss';
 
 export class PaletteForm extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      currentPalette: {
-        palette_name: '',
-        colors: []
-      },
-      allPalettes: [],
+      currentPalette: '',
+      colors: [],
       error: ''
     }
   }
 
-  handleChange = (e) => {
+  handleChange = async (e) => {
     this.setState({error: ''})
     let currentPalette = this.state.currentPalette;
     currentPalette = { ...currentPalette, [e.target.name]: e.target.value};
-    this.setState({currentPalette: currentPalette})
+    await this.setState({currentPalette: currentPalette})
+    let { trackCurrentPalette } = this.props;
+    trackCurrentPalette(this.state.currentPalette)
+  }
+
+  handleDropDownChange = async (e) => {
+    await this.setState({ currentPalette: e.target.value})
+    let { trackCurrentPalette } = this.props;
+    trackCurrentPalette(this.state.currentPalette)
   }
 
   render() {
+    const { palettes, currentProjectId } = this.props;
+    const paletteNames = palettes.flat().map(currentPalette => {
+      if (currentPalette.project_id === parseInt(currentProjectId)) {
+        return <option value={currentPalette.palette_name} key={currentPalette.id}> {currentPalette.palette_name} </option>
+      } else {
+        return 
+      }
+    })
     return (
       <section className="palette-details">
         <form className="palette-form">
@@ -34,10 +47,9 @@ export class PaletteForm extends Component {
             onChange = {this.handleChange}
           />
         </form>
-        <select className="palette-select">
+        <select className="palette-select" onChange={(event) => this.handleDropDownChange(event)}>
           <option value="Palette Name"> Select a Palette </option>
-          <option value="Palette Name 1"> Palette 1 </option>
-          <option value="Palette Name 2"> Palette 2 </option>
+          {paletteNames}
         </select>
       </section>
     )

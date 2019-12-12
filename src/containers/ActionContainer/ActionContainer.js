@@ -3,7 +3,6 @@ import './ActionContainer.scss';
 import logo from '../../images/colorwheel.png'
 
 export const ActionContainer = ({ randomizeColors, saveProject, errorMessage }) => {
-  console.log("inAction", errorMessage)
   return (
     <section className="action-container">
       <img src={logo} alt="Tone Zone logo, a color wheel" className="logo"/>

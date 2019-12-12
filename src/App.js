@@ -47,7 +47,6 @@ fetchAllProjects = async () => {
     
     palettes = await Promise.all(palettes)
     const cleanPalettes = palettes.filter(palettes => palettes !== undefined )
-    console.log("PAAPPPP", cleanPalettes)
     this.setState({ palettes: cleanPalettes})  
   }
 
@@ -98,9 +97,7 @@ fetchAllProjects = async () => {
   }
 
   deletePalette = (e) => {
-    console.log(e.target)
     if (e.target.className.includes('palette-trash')) {
-      console.log('hey')
       const paletteId = parseInt(e.target.id)
       console.log('paletteId', paletteId)
     }
@@ -139,18 +136,13 @@ fetchAllProjects = async () => {
       } else {
         let postedProject = await addProject(this.state.currentUserId, this.state.currentProject)
         let projectId = postedProject.id
-        console.log("iddd", projectId)
-        let postedPalettes = await addPalette(this.state.currentUserId, projectId, this.state.currentPalette, this.state.colors)
-        console.log("PLEEEEASE", postedPalettes)
+        await addPalette(this.state.currentUserId, projectId, this.state.currentPalette, this.state.colors)
         await this.fetchAllProjects()
-
       }
     }
   }
-  // .then(async () => this.fetchAllProjects())
 
   render() {
-    console.log("STATE APP:", this.state)
     const { colors } = this.state
     return (
       <div>

@@ -126,7 +126,10 @@ fetchAllProjects = async () => {
       }, [])
     this.setState({ colors: currentPaletteColors })
     }
-    
+  }
+
+  saveProject = (e) => {
+    console.log("SAVE", e.target)
   }
 
   render() {
@@ -145,6 +148,7 @@ fetchAllProjects = async () => {
               trackCurrentProject={this.trackCurrentProject}
               currentProjectId={this.state.currentProject}
               trackCurrentPalette={this.trackCurrentPalette}
+              saveProject={this.saveProject}
               />
             <ColorContainer colors={colors} toggleLock={this.toggleLock} />
           </>

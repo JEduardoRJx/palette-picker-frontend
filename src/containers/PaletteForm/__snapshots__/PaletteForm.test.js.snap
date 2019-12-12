@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaletteForm  should match the snapshot  1`] = `
+<section
+  className="palette-details"
+>
+  <form
+    className="palette-form"
+  >
+    <input
+      name="palette_name"
+      onChange={[Function]}
+      placeholder="Enter Palette Name"
+      type="text"
+    />
+  </form>
+  <select
+    className="palette-select"
+  >
+    <option
+      value="Palette Name"
+    >
+       Select a Palette 
+    </option>
+    <option
+      value="Palette Name 1"
+    >
+       Palette 1 
+    </option>
+    <option
+      value="Palette Name 2"
+    >
+       Palette 2 
+    </option>
+  </select>
+</section>
+`;

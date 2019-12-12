@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionContainer should match the snapshot  1`] = `
+<section
+  className="action-container"
+>
+  <img
+    alt="Tone Zone logo, a color wheel"
+    className="logo"
+    src="colorwheel.png"
+  />
+  <button
+    className="randomize-btn"
+    onClick={[Function]}
+  >
+     Randomize 
+  </button>
+  <button
+    className="save-btn"
+  >
+     SAVE 
+  </button>
+</section>
+`;

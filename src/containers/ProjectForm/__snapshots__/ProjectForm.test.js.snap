@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectForm  should match the snapshot  1`] = `
+<section
+  className="project-details"
+>
+  <form
+    className="project-form"
+  >
+    <input
+      name="currentProject"
+      onChange={[Function]}
+      placeholder="Enter New Project Name"
+      type="text"
+    />
+  </form>
+  <select
+    className="project-select"
+    onChange={[Function]}
+  >
+    <option
+      value="Project Name"
+    >
+       Select existing Project 
+    </option>
+    <option
+      key="3"
+      value="spring"
+    >
+       
+      spring
+        
+    </option>
+  </select>
+  <NavLink
+    className="view-allprojects-btn"
+    to="/projects"
+  >
+    View All Projects
+  </NavLink>
+</section>
+`;

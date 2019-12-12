@@ -13,7 +13,7 @@ export const ProjectsContainer = () => {
         {/* Display all projects here */}
         <div className='individual-project'>
           <h3 className='project-name'>Project Name</h3>
-          <button className='delete-btn'>
+          <button className='delete-btn' type='button'>
             <img className='delete-icon' src={trash} />
           </button>
 
@@ -25,7 +25,7 @@ export const ProjectsContainer = () => {
         <div className='palette'>
           <div className='name-delete-wrapper'>
             <h3 className='palette-name'>Name</h3>
-            <button className='delete-btn'>
+            <button className='delete-btn' type='button'>
               <img className='delete-icon' src={trash} />
             </button>
           </div>

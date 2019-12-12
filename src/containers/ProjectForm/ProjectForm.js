@@ -11,18 +11,23 @@ export class ProjectForm extends Component {
     }
   }
 
-  handleInputChange = (e) => {
-    this.setState({error: ''})
-    this.setState({ [e.target.name]: e.target.value })
+  handleInputChange = async (e) => {
+    await this.setState({error: ''})
+    await this.setState({ [e.target.name]: e.target.value })
     let { trackCurrentProject } = this.props;
     trackCurrentProject(this.state.currentProject)
   }
 
-  handleDropDownChange = (e) => {
-    this.setState({ currentProject: e.target.value})
+  handleDropDownChange = async (e) => {
+    await this.setState({ currentProject: e.target.value})
+    console.log("pf23:", this.state.currentProject)
+    let { trackCurrentProject } = this.props;
+    trackCurrentProject(this.state.currentProject)
   }
 
   render() {
+    console.log("pf29:", this.state.currentProject)
+
     let { projects  } = this.props;
     // console.log("in projectForm", trackCurrentProject)
     let projectNames = projects.map(currentProject => {

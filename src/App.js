@@ -94,7 +94,7 @@ export class App extends Component {
   }
 
   trackCurrentProject = (currentProject) => {
-    console.log("tackCurrentProject: App line 97: ", currentProject )
+    // console.log("tackCurrentProject: App line 97: ", currentProject )
     this.setState({ currentProject })
   }
 

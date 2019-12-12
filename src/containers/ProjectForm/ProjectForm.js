@@ -6,7 +6,7 @@ export class ProjectForm extends Component {
     super(props)
     this.state = {
       currentProject: '',
-      error: ''
+      error: '',
     }
   }
 
@@ -24,6 +24,7 @@ export class ProjectForm extends Component {
     let projectNames = projects.map(currentProject => {
       return <option value={currentProject.project_name} key={currentProject.id}> {currentProject.project_name}  </option>
     })
+
     return (
       <section className="project-details">
         <form className="project-form">

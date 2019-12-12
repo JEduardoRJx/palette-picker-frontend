@@ -5,7 +5,7 @@ import { Header } from '../src/containers/Header/Header';
 import { Main } from '../src/containers/Main/Main';
 import { ColorContainer } from '../src/containers/ColorContainer/ColorContainer';
 import { ProjectsContainer } from './containers/ProjectsContainer/ProjectsContainer'
-import { fetchData, removeProject } from './utils/apiCalls';
+import { fetchData, removeProject, addProject } from './utils/apiCalls';
 
 export class App extends Component {
   constructor() {
@@ -44,7 +44,11 @@ fetchAllProjects = async () => {
       let info = await fetchData(url)
       return info
     })
-    this.setState({ palettes: await Promise.all(palettes)})  
+    
+    palettes = await Promise.all(palettes)
+    const cleanPalettes = palettes.filter(palettes => palettes !== undefined )
+    console.log("PAAPPPP", cleanPalettes)
+    this.setState({ palettes: cleanPalettes})  
   }
 
   randomizeColors = () => {
@@ -128,8 +132,15 @@ fetchAllProjects = async () => {
     }
   }
 
-  saveProject = (e) => {
-    console.log("SAVE", e.target)
+  saveProject = async (e) => {
+    if (e.target.className === "save-btn") {
+      if (this.currentProject === '' || this.currentPalette === '') {
+        this.setState({errorMessage: "Please ensure you have a project and palette name"})
+      } else {
+        await addProject(this.state.currentUserId, this.state.currentProject)
+          .then(async () => this.fetchAllProjects())
+      }
+    }
   }
 
   render() {

@@ -29,6 +29,7 @@ export class PaletteForm extends Component {
     console.log("paletteState:", this.state.currentPalette)
 
     const { palettes, currentProjectId } = this.props;
+    console.log("palettes", palettes)
     const paletteNames = palettes.flat().map(currentPalette => {
       if (currentPalette.project_id === parseInt(currentProjectId)) {
         return <option value={currentPalette.palette_name} key={currentPalette.id}> {currentPalette.palette_name} </option>

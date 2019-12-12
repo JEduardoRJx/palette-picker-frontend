@@ -69,6 +69,18 @@ export class App extends Component {
     }
   }
 
+  deleteProject = (e) => {
+    if (e.target.id === 'project') {
+      console.log('project')
+    }
+  }
+
+  deletePalette = (e) => {
+    if (e.target.id === 'palette') {
+      console.log('palette')
+    }
+  }
+
   render() {
     console.log(this.state)
     const { colors } = this.state
@@ -85,7 +97,7 @@ export class App extends Component {
         <Route path='/projects' render={() => 
           <>
             <Header />
-            <ProjectsContainer />
+            <ProjectsContainer deleteProject={this.deleteProject} deletePalette={this.deletePalette}/>
           </>
         } />
       </div>

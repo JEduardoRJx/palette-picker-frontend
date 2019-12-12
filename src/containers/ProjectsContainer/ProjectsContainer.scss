@@ -15,6 +15,20 @@
   border: 5px solid;
   border-radius: 5px;
   margin: 0 auto;
+  display: flex;
+  padding: 10px;
+}
+
+.individual-project {
+  height: 50%;
+  // background-color: lightgreen;
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+}
+
+.project-name {
+  font-size: 2em;
 }
 
 .palettes-wrapper {
@@ -32,7 +46,7 @@
 }
 
 .delete-btn {
-  width: 10%;
+  width: 50px;
   height: 100%;
   // margin-top: 10%;
   // background-color: blue;

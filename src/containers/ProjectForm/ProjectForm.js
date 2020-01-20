@@ -49,8 +49,8 @@ export class ProjectForm extends Component {
           <option value="Project Name"> Select existing Project </option>
           { projectNames }
         </select>
-        <NavLink to='/projects' className='view-allprojects-btn'>View All Projects</NavLink>
-    <p> {this.state.currentProjectName} </p>
+        <NavLink to='/projects' className='view-all-projects-btn'>View All Projects</NavLink>
+        <p className="current-project"> {this.state.currentProjectName} </p>
       </section>
     )
   }

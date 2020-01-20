@@ -24,8 +24,9 @@ exports[`ProjectForm  should match the snapshot  1`] = `
        Select existing Project 
     </option>
     <option
+      id="spring"
       key="3"
-      value="spring"
+      value={3}
     >
        
       spring
@@ -33,10 +34,16 @@ exports[`ProjectForm  should match the snapshot  1`] = `
     </option>
   </select>
   <NavLink
-    className="view-allprojects-btn"
+    className="view-all-projects-btn"
     to="/projects"
   >
     View All Projects
   </NavLink>
+  <p
+    className="current-project"
+  >
+     
+     
+  </p>
 </section>
 `;

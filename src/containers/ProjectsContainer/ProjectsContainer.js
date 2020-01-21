@@ -15,7 +15,7 @@ export const ProjectsContainer = ({ deleteProject, deletePalette, projects, pale
                   type='button' 
                   id={`${palette.id}`}
                   onClick={(e) => deletePalette(e)}>
-                <img className='delete-icon palette-trash' src={trash} id={`${palette.id}`} />
+                <img className={`delete-icon palette-trash ${palette.project_id}`} src={trash} id={`${palette.id}`} alt={`Trash can for deleting this palette with id of ${palette.id}`} />
                 </button>
               </div>
               <div className='color-wrapper'>
@@ -37,7 +37,7 @@ export const ProjectsContainer = ({ deleteProject, deletePalette, projects, pale
             type='button' 
             id={`${project.id}`}
             onClick={(e) => deleteProject(e)}>
-          <img className='delete-icon project-trash' src={trash} id={project.id} />
+          <img className='delete-icon project-trash' src={trash} id={project.id} alt={`Trash can for deleting this palette with id of ${project.id}`}/>
           </button>
         </div>
           {displayPalettes}

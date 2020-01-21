@@ -5,7 +5,7 @@ import { Header } from '../src/containers/Header/Header';
 import { Main } from '../src/containers/Main/Main';
 import { ColorContainer } from '../src/containers/ColorContainer/ColorContainer';
 import { ProjectsContainer } from './containers/ProjectsContainer/ProjectsContainer'
-import { fetchData, removeProject, addProject, addPalette } from './utils/apiCalls';
+import { fetchData, removeProject, removePalette, addProject, addPalette } from './utils/apiCalls';
 
 export class App extends Component {
   constructor() {
@@ -96,10 +96,12 @@ fetchAllProjects = async () => {
     }
   }
 
-  deletePalette = (e) => {
+  deletePalette = async (e) => {
     if (e.target.className.includes('palette-trash')) {
       const paletteId = parseInt(e.target.id)
-      console.log('paletteId', paletteId)
+      const projectId = parseInt(e.target.classList[2])
+      await removePalette(this.state.currentUserId, projectId, paletteId)
+        .then(async () => this.fetchAllProjects())
     }
   }
 

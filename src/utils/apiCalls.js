@@ -24,6 +24,18 @@ export const removeProject = async (user_id, project_id) => {
   }
 }
 
+export const removePalette = async (user_id, project_id, palette_id) => {
+  const url = `https://tone-zone-api.herokuapp.com/api/v1/${user_id}/projects/${project_id}/palettes/${palette_id}`
+  const options = {
+    method: 'DELETE',
+    'Content-Type': 'application/json'
+  }
+  const response = await fetch(url, options);
+  if(!response.ok) {
+    throw Error('Unable to remove this palette at this time. Please try again later')
+  }
+}
+
 export const addProject = async (user_id, project_name) => {
   const url = `https://tone-zone-api.herokuapp.com/api/v1/${user_id}/projects`
   const options = {
